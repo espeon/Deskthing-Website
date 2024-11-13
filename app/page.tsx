@@ -77,42 +77,48 @@ export default function Home() {
             </div>
 
             <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible animate-in fade-in ease-in-out duration-500">
-              <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 text-muted-foreground/95">
-                <Link
-                  href="https://github.com/espeon/lyrthing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-400 font-semibold absolute bg-muted/75 rounded-sm px-2 ring-1 ring-neutral-500/40  -bottom-8 z-10 transition-all duration-300 group-hover:scale-100 group-hover:rotate-12 group-hover:-bottom-3 group-hover:-left-3 ease-in-out"
-                >
-                  LyrThing - espeon
-                </Link>
-                <div className="w-[320px] h-[180px] rounded-xl border-2 hover:border-teal-900 shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20 duration-300 transition-all">
+              <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 text-muted-foreground/95 p-4 -m-4">
+                {/* Bigger target area so we avoid annoying the user */}
+                <div className="absolute w-[320px] h-[180px] pb-32 group-hover:scale-150 duration-300">
+                  <Link
+                    href="https://github.com/espeon/lyrthing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-muted/75 group-hover:scale-75 -bottom-8 z-50 rounded-sm px-2 ring-neutral-500/40 hover:text-teal-400 font-semibold absolute transition-all duration-150 group-hover:rotate-12 group-hover:bottom-3 group-hover:left-3 ease-in-out"
+                  >
+                    LyrThing - espeon
+                  </Link>
+                </div>
+                <div className="w-[320px] h-[180px] rounded-xl duration-300 transition-all">
                   <Image
                     src="/lyrthing.png"
                     alt="DeskThing Audio"
                     fill
-                    className="object-cover rounded-xl"
+                    className="object-cover rounded-xl -z-40 border-2 hover:border-teal-900 shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20"
                   />
                 </div>
               </div>
 
               <div className="group hidden rounded-xl lg:block absolute top-0 left-[68%] transform rotate-12 transition-transform hover:rotate-3 hover:scale-105 text-muted-foreground/75">
-                <div className="w-[320px] h-[180px] rounded-xl overflow-hidden shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20 duration-300 transition-all">
+                {/* Bigger target area so we avoid annoying the user */}
+                <div className="absolute w-[320px] h-[180px] group-hover:scale-150 duration-300 -top-10">
+                  <Link
+                    href="https://discord.com/channels/1267348109067817051/1301413692381855857/1301413692381855857"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-muted/75 group-hover:scale-75 top-5 left-3 rotate-1 z-50 rounded-sm px-2 ring-neutral-500/40 hover:text-teal-400 font-semibold absolute transition-all duration-150 group-hover:top-12 group-hover:-rotate-12 group-hover:left-3 ease-in-out"
+                  >
+                    Weather Wave - Dammit Jeff
+                  </Link>
+                </div>
+                <div className="w-[320px] h-[180px] rounded-xl duration-300 transition-all">
                   <Image
                     src="/wwave.png"
                     alt="DeskThing Audio"
                     fill
-                    className="object-cover rounded-xl group-hover:z-50"
+                    className="object-cover rounded-xl -z-40 border-2 hover:border-teal-900 shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20"
                   />
                 </div>
-                <Link
-                  href="https://discord.com/channels/1267348109067817051/1301413692381855857/1301413692381855857"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-400 font-semibold absolute bg-muted/75 rounded-sm px-2 ring-1 ring-neutral-500/40 -top-8 z-50 scale-95 group-hover:scale-100 group-hover:-rotate-12 group-hover:-top-3 group-hover:-left-3 transition-all ease-in-out duration-300"
-                >
-                  Weather Wave - Dammit Jeff
-                </Link>
               </div>
 
               <div className="absolute top-14 left-[10%] h-[300px] z-0 w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:-rotate-1 hover:scale-105">

@@ -172,7 +172,10 @@ export default function GitHubReleases({
         >
           <div className="h-16" />
           {latestReleases.map((release, index) => (
-            <div key={release.id} className="mb-6">
+            <div
+              key={release.id}
+              className={`mb-6 ${index != 0 && "border-t border-neutral-200/50 pt-6"}`}
+            >
               <Link
                 href={release.html_url}
                 target="_blank"
@@ -199,9 +202,18 @@ export default function GitHubReleases({
                   {formatDate(release.published_at)}
                 </span>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">
-                {release.body.split("\n").slice(0, 3).join("\n").trim()}...
-              </p>
+              <div className="text-sm text-muted-foreground mb-2">
+                {release.body
+                  .replace(/[\n]+/g, "\n")
+                  .split("\n")
+                  .slice(0, 4)
+                  .map((line, index, total) => (
+                    <p key={index}>
+                      {line.trimEnd()}
+                      {index == total.length - 1 && "..."}
+                    </p>
+                  ))}
+              </div>
               {showLatestRelevantRelease && index == 0 && (
                 <>
                   <ShowReleasesForDevice release={release} deviceOS={os} />
