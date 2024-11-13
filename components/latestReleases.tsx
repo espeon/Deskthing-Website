@@ -90,7 +90,13 @@ export default function GitHubReleases({
     );
   };
 
-  const deviceOS: "windows" | "macos" | "linux" | "android" | "ios" = () => {
+  const deviceOS: () =>
+    | "windows"
+    | "macos"
+    | "linux"
+    | "android"
+    | "ios"
+    | undefined = () => {
     if (typeof window !== "undefined") {
       const userAgent = window.navigator.userAgent;
       console.log("Your UA is", userAgent);
@@ -144,6 +150,8 @@ export default function GitHubReleases({
 
   const latestReleases = latest ? releases.slice(0, latest) : releases;
 
+  const os = deviceOS();
+
   return (
     <>
       {showHeader && (
@@ -196,10 +204,7 @@ export default function GitHubReleases({
               </p>
               {showLatestRelevantRelease && index == 0 && (
                 <>
-                  <ShowReleasesForDevice
-                    release={release}
-                    deviceOS={deviceOS()}
-                  />
+                  <ShowReleasesForDevice release={release} deviceOS={os} />
                   <div className="text-sm text-muted-foreground my-1">
                     Or download the latest release for your device:
                   </div>
@@ -238,10 +243,10 @@ function ShowReleasesForDevice({
   deviceOS,
 }: {
   release: Release;
-  deviceOS: "windows" | "macos" | "linux" | "android" | "ios";
+  deviceOS: "windows" | "macos" | "linux" | "android" | "ios" | undefined;
 }) {
   const relevantRelease = displayRelevantRelease(release, deviceOS);
-  if (relevantRelease) {
+  if (relevantRelease && deviceOS) {
     return (
       <Link
         href={relevantRelease.browser_download_url}
@@ -263,7 +268,7 @@ function ShowReleasesForDevice({
 
 function displayRelevantRelease(
   release: Release,
-  deviceOS: "windows" | "macos" | "linux" | "android" | "ios",
+  deviceOS: "windows" | "macos" | "linux" | "android" | "ios" | undefined,
 ) {
   if (deviceOS === "windows") {
     return release.assets.find((asset) => asset.name.includes("win"));
@@ -274,6 +279,8 @@ function displayRelevantRelease(
   } else if (deviceOS === "android") {
     return null;
   } else if (deviceOS === "ios") {
+    return null;
+  } else {
     return null;
   }
 }
