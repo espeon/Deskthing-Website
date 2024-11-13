@@ -9,7 +9,11 @@ import {
 } from "react-icons/si";
 import { Button } from "./ui/button";
 
-export const SocialIcons = () => {
+export const SocialIcons = ({
+  extraIcons = false,
+}: {
+  extraIcons?: boolean;
+}) => {
   return (
     <div className="flex items-center gap-2">
       <Link href="https://github.com/itsriprod/deskthing" target="_blank">
@@ -33,22 +37,30 @@ export const SocialIcons = () => {
       <Link
         href="https://reddit.com/r/deskthing"
         target="_blank"
-        className="border-r pr-2"
+        className={extraIcons ? "border-r pr-2" : ""}
       >
         <Button variant="ghost" size="icon" className="hover:text-green-400">
           <SiReddit className="w-4 h-4" />
         </Button>
       </Link>
-      <Link href="https://trello.com/b/6v0paxqV/deskthing" target="_blank">
-        <Button variant="ghost" size="icon" className="hover:text-green-400">
-          <SiTrello className="w-4 h-4" />
-        </Button>
-      </Link>
-      <Link href="https://github.com/sponsors/itsriprod" target="_blank">
-        <Button variant="ghost" size="icon" className="hover:text-pink-400">
-          <Heart className="w-5 h-5" />
-        </Button>
-      </Link>
+      {extraIcons && (
+        <>
+          <Link href="https://trello.com/b/6v0paxqV/deskthing" target="_blank">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hover:text-green-400"
+            >
+              <SiTrello className="w-4 h-4" />
+            </Button>
+          </Link>
+          <Link href="https://github.com/sponsors/itsriprod" target="_blank">
+            <Button variant="ghost" size="icon" className="hover:text-pink-400">
+              <Heart className="w-5 h-5" />
+            </Button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

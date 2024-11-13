@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4 fade-in-60 ease-in-out duration-500">
+        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4 animate-in fade-in-80 ease-in-out duration-500">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-full block lg:hidden">
               <div className="absolute top-[15%] left-0 w-40 h-20 bg-primary/80 rounded-full blur-3xl opacity-20" />
@@ -43,15 +43,19 @@ export default function Home() {
                 View the official DeskThing site{" "}
                 <ChevronRight className="inline-block w-4 h-4 mb-0.5" />
               </Link>
-              <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text pt-4">
+              <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-green-600 to-green-600/60 dark:from-green-500 dark:to-green-400 text-transparent pb-6 bg-clip-text pt-4">
                 Take Back the
                 <br />
                 Car Thing
               </h1>
-              <p className="text-muted-foreground max-w-2xl mb-8 xl:mr-8  pointer-events-none">
-                Upcycle your discontinued Car Thing into a versatile desktop
-                assistant that enhances your flow. Reduce e-waste and boost your
-                productivity in the process. Everyone wins.
+              <p className="text-muted-foreground max-w-2xl xl:mr-8  pointer-events-none">
+                Upcycle your discontinued Car Thing or other mobile device into
+                a versatile desktop assistant that enhances your flow. Reduce
+                e-waste and boost your productivity in the process.
+              </p>
+              <p className="text-green-600 dark:text-green-400 mt-1 mb-8 xl:mr-8 pointer-events-none">
+                {" "}
+                Everyone wins.
               </p>
               <div className="flex gap-4 mb-4 pointer-events-auto">
                 <Link href="/releases">
@@ -68,7 +72,7 @@ export default function Home() {
                 </Link>
               </div>
               <div className="text-muted-foreground pointer-events-auto">
-                <SocialIcons />
+                <SocialIcons extraIcons={false} />
               </div>
             </div>
 
@@ -82,7 +86,7 @@ export default function Home() {
                 >
                   LyrThing - espeon
                 </Link>
-                <div className="w-[320px] h-[180px] overflow-hidden shadow-2xl rounded-xl">
+                <div className="w-[320px] h-[180px] rounded-xl border-2 hover:border-teal-900 shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20 duration-300 transition-all">
                   <Image
                     src="/lyrthing.png"
                     alt="DeskThing Audio"
@@ -101,7 +105,7 @@ export default function Home() {
                 >
                   Weather Wave - Dammit Jeff
                 </Link>
-                <div className="w-[320px] h-[180px] rounded-xl overflow-hidden shadow-2xl group-hover:z-50">
+                <div className="w-[320px] h-[180px] rounded-xl overflow-hidden group-hover:z-50  shadow-xl group-hover:shadow-teal-950/40 shadow-teal-950/20 duration-300 transition-all">
                   <Image
                     src="/wwave.png"
                     alt="DeskThing Audio"
@@ -129,13 +133,13 @@ export default function Home() {
 
         {/* Latest Releases */}
         <section className="mx-auto px-4 bg-muted/50 py-12 border-y border-primary/20">
-          <div className="text-center mb-12 fade-in-60 ease-in-out duration-500">
+          <div className="text-center mb-12 animate-in fade-in-60 ease-in-out duration-500">
             <h2 className="text-3xl font-bold mb-4">Get the Latest</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-md">
               Just wanting to update? Check out the latest release.
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center fade-in-60 ease-in-out duration-500">
+          <div className="flex flex-col items-center justify-center animate-in fade-in delay ease-in-out duration-500">
             <div className="pt-8 px-4 bg-background/40 rounded-xl">
               <GitHubReleases
                 owner="itsriprod"
@@ -170,7 +174,7 @@ export default function Home() {
                   Sustainable Computing
                 </h3>
                 <p className="text-muted-foreground">
-                  Give your CarThing a second life instead of contributing to
+                  Give your Thing a second life instead of contributing to
                   e-waste. Sustainability meets productivity.
                 </p>
               </div>
@@ -179,13 +183,13 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-2">Enhanced Features</h3>
                 <p className="text-muted-foreground">
                   Local audio support, weather reporting, and more. Transform
-                  your CarThing into a versatile desktop companion.
+                  your Thing into a versatile desktop companion.
                 </p>
               </div>
               <Link
                 href="https://github.com/itsriprod/deskthing"
                 target="_blank"
-                className="p-6 rounded-lg border border-primary/20 bg-background/40 hover:bg-blue-900/10 shadow-lg hover:shadow-blue-900/30 shadow-background duration-300 transition-all"
+                className="p-6 rounded-lg border border-primary/20 bg-background/40 hover:bg-teal-900/10 shadow-lg hover:shadow-teal-900/30 shadow-background duration-300 transition-all"
               >
                 <div className="flex items-start justify-between">
                   <SiGithub className="w-12 h-12 text-primary mb-4" />
@@ -206,7 +210,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Community Apps</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-md">
-              Explore community-built applications that expand your Car Thing's
+              Explore community-built applications that expand your Thing's
               functionality. From current weather to song lyrics, there's an app
               for almost every need. And if you want, it's easy to create your
               own.
@@ -249,7 +253,7 @@ export default function Home() {
                 <h3 className="font-bold mb-2">DeskThing Project Begins</h3>
                 <p className="text-muted-foreground">
                   A hobby project transforms into a mission to repurpose and
-                  enhance the CarThing.
+                  enhance the CarThing and other older mobile devices.
                 </p>
               </div>
             </div>

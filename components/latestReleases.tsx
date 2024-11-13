@@ -19,6 +19,7 @@ import {
   PartyPopper,
 } from "lucide-react";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface Asset {
   name: string;
@@ -42,11 +43,13 @@ export default function GitHubReleases({
   repo = "next.js",
   latest = null,
   showHeader = true,
+  showLatestRelevantRelease = true,
 }: {
   owner?: string;
   repo?: string;
   latest?: null | number;
   showHeader?: boolean;
+  showLatestRelevantRelease?: boolean;
 }) {
   const [releases, setReleases] = useState<Release[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,6 +88,24 @@ export default function GitHubReleases({
     return new Intl.NumberFormat("en-US", { notation: "compact" }).format(
       count,
     );
+  };
+
+  const deviceOS: "windows" | "macos" | "linux" | "android" | "ios" = () => {
+    if (typeof window !== "undefined") {
+      const userAgent = window.navigator.userAgent;
+      console.log("Your UA is", userAgent);
+      if (userAgent.includes("Windows")) {
+        return "windows";
+      } else if (userAgent.includes("Mac")) {
+        return "macos";
+      } else if (userAgent.includes("Linux")) {
+        return "linux";
+      } else if (userAgent.includes("Android")) {
+        return "android";
+      } else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) {
+        return "ios";
+      }
+    }
   };
 
   if (loading) {
@@ -135,9 +156,9 @@ export default function GitHubReleases({
       )}
       <CardContent>
         <ScrollArea
-          className="max-h-[500px] pr-4 -mt-16"
+          className="h-full max-h-[700px] overflow-auto pr-4 -mt-16"
           style={{
-            maskImage: `linear-gradient(to bottom, transparent 2rem, black 5rem)`,
+            maskImage: `linear-gradient(to bottom, transparent 2rem, black 4rem, black 90%, transparent 97%)`,
             maskComposite: "intersect",
           }}
         >
@@ -153,10 +174,7 @@ export default function GitHubReleases({
                   <Rocket className="w-6 h-6 mr-2" />
                   {release.name}
                   {index == 0 && (
-                    <Badge
-                      variant="secondary"
-                      className="ml-2 flex items-center"
-                    >
+                    <Badge variant="default" className="ml-2 flex items-center">
                       <PartyPopper className="w-4 h-4 mr-1 inline" />
                       <span>Latest</span>
                     </Badge>
@@ -174,8 +192,19 @@ export default function GitHubReleases({
                 </span>
               </div>
               <p className="text-sm text-muted-foreground mb-2">
-                {release.body.split("\n").slice(0, 3).join("\n")}
+                {release.body.split("\n").slice(0, 3).join("\n").trim()}...
               </p>
+              {showLatestRelevantRelease && index == 0 && (
+                <>
+                  <ShowReleasesForDevice
+                    release={release}
+                    deviceOS={deviceOS()}
+                  />
+                  <div className="text-sm text-muted-foreground my-1">
+                    Or download the latest release for your device:
+                  </div>
+                </>
+              )}
               <div className="space-y-1">
                 {release.assets.map((asset) => (
                   <div
@@ -202,4 +231,49 @@ export default function GitHubReleases({
       </CardContent>
     </>
   );
+}
+
+function ShowReleasesForDevice({
+  release,
+  deviceOS,
+}: {
+  release: Release;
+  deviceOS: "windows" | "macos" | "linux" | "android" | "ios";
+}) {
+  const relevantRelease = displayRelevantRelease(release, deviceOS);
+  if (relevantRelease) {
+    return (
+      <Link
+        href={relevantRelease.browser_download_url}
+        target="_blank"
+        className="flex items-center space-x-2 py-2"
+      >
+        <Button size="sm" variant="default">
+          <Download className="w-4 h-4 mr-2 inline" />
+          DeskThing {release.name} for{" "}
+          {deviceOS[0].toUpperCase().replace("I", "i").replace("M", "m") +
+            deviceOS.slice(1).replace("os", "OS")}
+        </Button>
+      </Link>
+    );
+  } else {
+    return <div>No release for {deviceOS}. Sorry about that.</div>;
+  }
+}
+
+function displayRelevantRelease(
+  release: Release,
+  deviceOS: "windows" | "macos" | "linux" | "android" | "ios",
+) {
+  if (deviceOS === "windows") {
+    return release.assets.find((asset) => asset.name.includes("win"));
+  } else if (deviceOS === "macos") {
+    return release.assets.find((asset) => asset.name.includes("mac"));
+  } else if (deviceOS === "linux") {
+    return release.assets.find((asset) => asset.name.includes("linux"));
+  } else if (deviceOS === "android") {
+    return null;
+  } else if (deviceOS === "ios") {
+    return null;
+  }
 }

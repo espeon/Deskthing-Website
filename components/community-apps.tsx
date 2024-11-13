@@ -180,7 +180,7 @@ export function CommunityApps({ limit }: { limit?: number }) {
         {shownApps.map((app) => (
           <Card
             key={app.title}
-            className="dark:bg-black/40 bg-neutral-300/40 border-green-900/20 backdrop-blur-sm hover:border-green-900/40 transition-colors flex flex-col"
+            className="dark:bg-black/40 bg-neutral-300/40 hover:bg-teal-300/10 dark:hover:bg-teal-950/10 border-green-900/20 backdrop-blur-sm hover:border-teal-900 shadow-lg hover:shadow-teal-900/30 shadow-background duration-300 transition-all"
           >
             <CardHeader>
               <div className="flex justify-between items-start">

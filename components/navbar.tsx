@@ -11,7 +11,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+interface LinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
 export function Navbar() {
+  let links: LinkProps[] = [
+    { href: "/", children: "Home" },
+    { href: "/about", children: "About" },
+    { href: "/apps", children: "Apps" },
+    { href: "/releases", children: "Download" },
+  ];
   return (
     <header className="border-b border-green-900/20 sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -23,48 +34,13 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[300px]" title="Menu">
-              <SheetTitle>
-                <Link
-                  href="/"
-                  className="text-xl font-bold text-green-500 hover:text-green-400 transition-colors font-mono"
-                >
-                  DeskThing
-                </Link>
-              </SheetTitle>
-              <div className="flex flex-col gap-4 mt-8">
-                <SheetClose asChild>
-                  <Link
-                    href="/"
-                    className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2"
-                  >
-                    Home
+              {links.map((link) => (
+                <SheetClose asChild key={link.href}>
+                  <Link href={link.href}>
+                    <SheetTitle>{link.children}</SheetTitle>
                   </Link>
                 </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    href="/about"
-                    className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2"
-                  >
-                    About
-                  </Link>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2"
-                  >
-                    Docs
-                  </Link>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Link
-                    href="/apps"
-                    className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2"
-                  >
-                    Apps
-                  </Link>
-                </SheetClose>
-              </div>
+              ))}
             </SheetContent>
           </Sheet>
           <Link
@@ -73,31 +49,14 @@ export function Navbar() {
           >
             DeskThing
           </Link>
-          <div className="hidden md:flex gap-6">
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="#"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Docs
-            </Link>
-            <Link
-              href="/apps"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Apps
-            </Link>
+          <div className="hidden md:flex gap-2">
+            {links.map((link) => (
+              <Link href={link.href} key={link.href}>
+                <Button variant="ghost" size="sm">
+                  {link.children}
+                </Button>
+              </Link>
+            ))}
           </div>
         </div>
         <div className="flex items-center gap-2">

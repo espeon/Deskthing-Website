@@ -10,8 +10,8 @@
         --card-foreground: 0 0% 3.9%;
         --popover: 0 0% 100%;
         --popover-foreground: 0 0% 3.9%;
-        --primary: 173.1 76.2% 26.3%;
-        --primary-foreground: 355.7 100% 97.3%;
+        --primary: 142 76% 26%;
+        --primary-foreground: 355.7 100% 97%;
         --secondary: 0 0% 96.1%;
         --secondary-foreground: 0 0% 9%;
         --muted: 0 0% 96.1%;
@@ -33,7 +33,7 @@
         --card-foreground: 0 0% 98%;
         --popover: 0 0% 3.9%;
         --popover-foreground: 0 0% 98%;
-        --primary: 173 100% 39%;
+        --primary: 142.09 70.56% 50.29%;
         --primary-foreground: 164.9 80.4% 10%;
         --secondary: 0 0% 14.9%;
         --secondary-foreground: 0 0% 98%;
@@ -68,11 +68,11 @@ body {
 }
 
 .dark .drop-shadow-png {
-    -webkit-filter: drop-shadow(5px 5px 50px #0f95);
-    filter: drop-shadow(5px 5px 50px #0f95);
+    -webkit-filter: drop-shadow(5px 5px 50px #0f45);
+    filter: drop-shadow(5px 5px 50px #0f45);
 }
 
 .drop-shadow-png {
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    -webkit-filter: drop-shadow(5px 5px 50px #0718);
     filter: drop-shadow(5px 5px 50px #0718);
 }
