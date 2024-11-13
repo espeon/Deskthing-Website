@@ -7,8 +7,7 @@ import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "DeskThing - Give your CarThing a Second Life",
-  description:
-    "Transform your Spotify CarThing into a productive desktop companion",
+  description: "Upcycle your Car Thing into a versatile desktop assistant.",
 };
 
 const sans = DM_Sans({
