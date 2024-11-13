@@ -32,8 +32,15 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10  pointer-events-none">
-              <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10 pointer-events-none">
+              <Link
+                href="https://deskthing.app"
+                className="bg-primary/50 hover:bg-primary/70 rounded-full px-4 py-1 text-sm font-bold dark:text-slate-300"
+              >
+                View the official DeskThing site{" "}
+                <ChevronRight className="inline-block w-4 h-4 mb-0.5" />
+              </Link>
+              <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text pt-4">
                 Take Back the
                 <br />
                 Car Thing
@@ -62,7 +69,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible">
+            <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible animate-in fade-in ease-in-out duration-500">
               <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105">
                 <p className="text-muted-foreground/50 group-hover:text-muted-foreground font-semibold absolute -bottom-6 z-10 transition-all duration-300">
                   LyrThing - espeon
