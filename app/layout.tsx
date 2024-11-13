@@ -1,32 +1,32 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { DM_Sans, Geist_Mono, Baskervville } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
+import "./globals.css";
+import type { Metadata } from "next";
+import { DM_Sans, Geist_Mono, Baskervville } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: 'DeskThing - Give your CarThing a Second Life',
+  title: "DeskThing - Give your CarThing a Second Life",
   description:
-    'Transform your Spotify CarThing into a productive desktop companion',
+    "Transform your Spotify CarThing into a productive desktop companion",
 };
 
 const sans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: '400',
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: "400",
 });
 
 const mono = Geist_Mono({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-mono',
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
 });
 
 const serif = Baskervville({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-serif',
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-serif",
 });
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${mono.variable} ${sans.variable} ${serif.variable} font-sans antialiased flex flex-col min-h-screen`}
+        className={`${mono.variable} ${sans.variable} ${serif.variable} font-sans antialiased flex flex-col min-h-screen w-screen`}
       >
         <ThemeProvider
           attribute="class"

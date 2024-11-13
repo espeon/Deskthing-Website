@@ -1,38 +1,38 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
-  Github,
   MonitorSmartphone,
   Recycle,
   Rocket,
   Zap,
   ChevronRight,
-} from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { CommunityApps } from '@/components/community-apps';
-import React from 'react'
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { CommunityApps } from "@/components/community-apps";
+import React from "react";
+import { SiGithub } from "react-icons/si";
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto px-4 pt-32 pb-48 max-w-screen-xl">
-          <div className="relative h-full block lg:hidden pb-12">
-            <div className="absolute top-[15%] left-0 w-40 h-20 bg-primary/80 rounded-full blur-3xl opacity-20" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/60 rounded-full blur-3xl opacity-20" />
-            <div className="h-[300px] w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:rotate-1 hover:scale-105">
-              <Image
-                src="https://i.imgur.com/r1XRVVe.png"
-                alt="DeskThing Interface"
-                fill
-                className="object-contain drop-shadow-png"
-              />
-            </div>
-          </div>
+        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div className="relative h-full block lg:hidden">
+              <div className="absolute top-[15%] left-0 w-40 h-20 bg-primary/80 rounded-full blur-3xl opacity-20" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/60 rounded-full blur-3xl opacity-20" />
+              <div className="h-[300px] w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:rotate-1 hover:scale-105">
+                <Image
+                  src="/carthing@3x.png"
+                  alt="DeskThing Interface"
+                  fill
+                  className="object-contain drop-shadow-png"
+                />
+              </div>
+            </div>
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10">
-              <h1 className="text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text">
-                Take Back The
+              <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text">
+                Take Back the
                 <br />
                 Car Thing
               </h1>
@@ -41,31 +41,41 @@ export default function Home() {
                 assistant that enhances your flow. Reduce e-waste and boost your
                 productivity in the process. Everyone wins.
               </p>
-              <div className="flex gap-4">
-                <Button>
-                  Get Started
-                  <Rocket className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline">
-                  Documentation
-                  <Zap className="ml-2 h-4 w-4" />
-                </Button>
+              <div className="flex gap-4 mb-4">
+                <Link href="/apps">
+                  <Button>
+                    Get Started
+                    <Rocket className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="https://github.com/itsriprod/deskthing">
+                  <Button variant="outline">
+                    Documentation
+                    <Zap className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
 
-            <div className="relative h-[400px] hidden lg:block right-24">
-              <div className="absolute -bottom-5 right-[50%] w-[320px] h-[180px] rounded-lg overflow-hidden shadow-2xl transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 rounded-xl">
+            <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible">
+              <div className="absolute -bottom-5 right-[50%] w-[320px] h-[180px] overflow-hidden shadow-2xl transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 rounded-xl">
                 <Image
                   src="https://i.imgur.com/H95qxxs.png"
                   alt="DeskThing Weather"
                   fill
                   className="object-contain rounded-xl"
                 />
+                <Image
+                  src="/lyrthing.png"
+                  alt="DeskThing Audio"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
-              <div className="absolute top-0 left-[68%] w-[320px] h-[180px] rounded-lg overflow-hidden shadow-2xl transform rotate-12 transition-transform hover:rotate-3 hover:scale-105">
+              <div className="hidden lg:block absolute top-0 left-[68%] w-[320px] h-[180px] rounded-xl overflow-hidden shadow-2xl transform rotate-12 transition-transform hover:rotate-3 hover:scale-105">
                 <Image
-                  src="https://i.imgur.com/dEpykEP.png"
+                  src="/wwave.png"
                   alt="DeskThing Audio"
                   fill
                   className="object-cover"
@@ -74,7 +84,7 @@ export default function Home() {
 
               <div className="absolute top-14 left-[10%] h-[300px] w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:-rotate-1 hover:scale-105">
                 <Image
-                  src="https://i.imgur.com/r1XRVVe.png"
+                  src="/carthing@3x.png"
                   alt="DeskThing Interface"
                   fill
                   className="object-contain drop-shadow-png"
@@ -114,7 +124,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="p-6 rounded-lg border border-primary/20 bg-background/40">
-                <Github className="w-12 h-12 text-primary mb-4" />
+                <SiGithub className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">100% Open Source</h3>
                 <p className="text-muted-foreground">
                   Built by the community, for the community. Contribute and help
@@ -140,8 +150,8 @@ export default function Home() {
           <div className="flex align-center justify-center mt-4">
             <Link href="/apps">
               <Button variant="outline">
-                  More apps
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                More apps
+                <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -154,9 +164,9 @@ export default function Home() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="flex gap-4">
-              <div className="w-24 text-primary text-right">2022</div>
-              <div className="flex-1 pb-8 border-l border-primary/20 pl-8 relative">
-                <div className="absolute w-3 h-3 bg-primary rounded-full -left-[6px]" />
+              <div className="w-12 text-primary text-right">2022</div>
+              <div className="flex-1 pb-8 -mb-8 border-l border-primary/20 pl-8 relative">
+                <div className="absolute w-3 h-3 bg-primary rounded-full top-1.5 -left-[6px]" />
                 <h3 className="font-bold mb-2">
                   CarThing Launch & Discontinuation
                 </h3>
@@ -167,9 +177,9 @@ export default function Home() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-24 text-primary text-right">2023</div>
-              <div className="flex-1 pb-8 border-l border-primary/20 pl-8 relative">
-                <div className="absolute w-3 h-3 bg-primary rounded-full -left-[6px]" />
+              <div className="w-12 text-primary text-right">2023</div>
+              <div className="flex-1 pb-8 -mb-8 border-l border-primary/20 pl-8 relative">
+                <div className="absolute w-3 h-3 bg-primary rounded-full top-1.5 -left-[6px]" />
                 <h3 className="font-bold mb-2">DeskThing Project Begins</h3>
                 <p className="text-muted-foreground">
                   A hobby project transforms into a mission to repurpose and
@@ -178,9 +188,9 @@ export default function Home() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-24 text-primary text-right">2024</div>
+              <div className="w-12 text-primary text-right">2024</div>
               <div className="flex-1 pb-8 border-l border-primary/20 pl-8 relative">
-                <div className="absolute w-3 h-3 bg-primary rounded-full -left-[6px]" />
+                <div className="absolute w-3 h-3 bg-primary rounded-full top-1.5  -left-[6px]" />
                 <h3 className="font-bold mb-2">Official Support Ends</h3>
                 <p className="text-muted-foreground">
                   As Spotify ends support on December 9th, DeskThing emerges as

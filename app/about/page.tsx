@@ -1,6 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { Github, Heart } from 'lucide-react';
-import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import { Github, Heart } from "lucide-react";
+import Link from "next/link";
+import { SiGithub } from "react-icons/si";
 
 export default function About() {
   return (
@@ -10,7 +11,7 @@ export default function About() {
           About DeskThing
         </h1>
 
-        <div className="max-w-4xl mx-auto px-4 pb-8 leading-relaxed">
+        <div className="max-w-4xl mx-auto pb-8 leading-relaxed">
           <p className="text-lg mb-4">
             <strong>A quick history lesson</strong>
           </p>
@@ -75,11 +76,11 @@ export default function About() {
                 target="_blank"
               >
                 <Button className="bg-green-600 hover:bg-green-700 w-full sm:w-auto">
-                  <Github className="mr-2 h-4 w-4" />
+                  <SiGithub className="mr-2 h-4 w-4" />
                   Contribute on GitHub
                 </Button>
               </Link>
-              <Link href="#" target="_blank">
+              <Link href="https://github.com/sponsors/itsriprod">
                 <Button
                   variant="outline"
                   className="border-green-800 w-full sm:w-auto"
