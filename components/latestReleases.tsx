@@ -10,7 +10,14 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
-import { GitBranch, Calendar, Tag, Download, Rocket } from "lucide-react";
+import {
+  GitBranch,
+  Calendar,
+  Tag,
+  Download,
+  Rocket,
+  PartyPopper,
+} from "lucide-react";
 import Link from "next/link";
 
 interface Asset {
@@ -33,9 +40,13 @@ interface Release {
 export default function GitHubReleases({
   owner = "vercel",
   repo = "next.js",
+  latest = null,
+  showHeader = true,
 }: {
   owner?: string;
   repo?: string;
+  latest?: null | number;
+  showHeader?: boolean;
 }) {
   const [releases, setReleases] = useState<Release[]>([]);
   const [loading, setLoading] = useState(true);
@@ -79,17 +90,21 @@ export default function GitHubReleases({
   if (loading) {
     return (
       <>
-        <CardHeader>
-          <CardTitle>Latest Releases</CardTitle>
-          <CardDescription>Loading latest releases...</CardDescription>
-        </CardHeader>
-        <CardContent>
+        {showHeader && (
+          <CardHeader>
+            <CardTitle>Latest Releases</CardTitle>
+            <CardDescription>Loading latest releases...</CardDescription>
+          </CardHeader>
+        )}
+        <CardContent className="min-w-[550px] min-h-max h-full max-h-[500px] animate-pulse">
           {[...Array(3)].map((_, index) => (
             <div key={index} className="mb-4">
               <Skeleton className="h-6 w-3/4 mb-2" />
               <Skeleton className="h-4 w-1/2" />
             </div>
           ))}
+          <Skeleton className="h-4 w-1/5 mb-2" />
+          <Skeleton className="h-4 w-2/3" />
         </CardContent>
       </>
     );
@@ -106,33 +121,46 @@ export default function GitHubReleases({
     );
   }
 
+  const latestReleases = latest ? releases.slice(0, latest) : releases;
+
   return (
     <>
-      <CardHeader>
-        <CardTitle>Latest Releases</CardTitle>
-        <CardDescription>
-          Recent releases for {owner}/{repo}
-        </CardDescription>
-      </CardHeader>
+      {showHeader && (
+        <CardHeader>
+          <CardTitle>Latest Releases</CardTitle>
+          <CardDescription>
+            Recent releases for {owner}/{repo}
+          </CardDescription>
+        </CardHeader>
+      )}
       <CardContent>
         <ScrollArea
-          className="h-[500px] pr-4 -mt-16"
+          className="max-h-[500px] pr-4 -mt-16"
           style={{
             maskImage: `linear-gradient(to bottom, transparent 2rem, black 5rem)`,
             maskComposite: "intersect",
           }}
         >
           <div className="h-16" />
-          {releases.map((release) => (
+          {latestReleases.map((release, index) => (
             <div key={release.id} className="mb-6">
               <Link
                 href={release.html_url}
                 target="_blank"
                 className="flex items-center space-x-2"
               >
-                <Rocket className="w-4 h-4 mr-2" />
-                <span className="text-lg font-semibold mb-2">
+                <span className="text-lg font-semibold mb-2 flex items-center">
+                  <Rocket className="w-6 h-6 mr-2" />
                   {release.name}
+                  {index == 0 && (
+                    <Badge
+                      variant="secondary"
+                      className="ml-2 flex items-center"
+                    >
+                      <PartyPopper className="w-4 h-4 mr-1 inline" />
+                      <span>Latest</span>
+                    </Badge>
+                  )}
                 </span>
               </Link>
               <div className="flex items-center space-x-4 mb-2">
@@ -150,11 +178,18 @@ export default function GitHubReleases({
               </p>
               <div className="space-y-1">
                 {release.assets.map((asset) => (
-                  <div key={asset.name} className="flex items-center text-sm">
-                    <Link href={asset.browser_download_url} target="_blank">
+                  <div
+                    key={asset.name}
+                    className="flex items-center text-sm group"
+                  >
+                    <Link
+                      href={asset.browser_download_url}
+                      target="_blank"
+                      className="group-hover:text-green-400 transition-colors"
+                    >
                       <Download className="w-4 h-4 mr-2 inline" />
                       <span className="flex-1">{asset.name}</span>
-                      <span className="text-muted-foreground ml-2">
+                      <span className="text-muted-foreground ml-2 group-hover:text-green-400/60 transition-colors">
                         {formatDownloadCount(asset.download_count)} downloads
                       </span>
                     </Link>

@@ -6,6 +6,8 @@ import {
   Zap,
   ChevronRight,
   Book,
+  ChevronDown,
+  ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,6 +15,7 @@ import { CommunityApps } from "@/components/community-apps";
 import React from "react";
 import { SiGithub } from "react-icons/si";
 import { SocialIcons } from "@/components/socialIcons";
+import GitHubReleases from "@/components/latestReleases";
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -51,7 +54,7 @@ export default function Home() {
                 productivity in the process. Everyone wins.
               </p>
               <div className="flex gap-4 mb-4 pointer-events-auto">
-                <Link href="/start-here">
+                <Link href="/releases">
                   <Button>
                     Get Started
                     <Rocket className="ml-2 h-4 w-4" />
@@ -70,10 +73,15 @@ export default function Home() {
             </div>
 
             <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible animate-in fade-in ease-in-out duration-500">
-              <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105">
-                <p className="text-muted-foreground/50 group-hover:text-muted-foreground font-semibold absolute -bottom-6 z-10 transition-all duration-300">
+              <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 text-muted-foreground/75">
+                <Link
+                  href="https://github.com/espeon/lyrthing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 font-semibold absolute -bottom-6 z-10 transition-all duration-300"
+                >
                   LyrThing - espeon
-                </p>
+                </Link>
                 <div className="w-[320px] h-[180px] overflow-hidden shadow-2xl rounded-xl">
                   <Image
                     src="/lyrthing.png"
@@ -84,10 +92,15 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="group hidden rounded-xl lg:block absolute top-0 left-[68%] transform rotate-12 transition-transform hover:rotate-3 hover:scale-105">
-                <p className="text-muted-foreground/50 group-hover:text-muted-foreground font-semibold absolute -top-6 z-10 transition-all duration-300">
+              <div className="group hidden rounded-xl lg:block absolute top-0 left-[68%] transform rotate-12 transition-transform hover:rotate-3 hover:scale-105 text-muted-foreground/75">
+                <Link
+                  href="https://discord.com/channels/1267348109067817051/1301413692381855857/1301413692381855857"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-teal-400 font-semibold absolute -top-6 z-10 transition-all duration-300"
+                >
                   Weather Wave - Dammit Jeff
-                </p>
+                </Link>
                 <div className="w-[320px] h-[180px] rounded-xl overflow-hidden shadow-2xl group-hover:z-50">
                   <Image
                     src="/wwave.png"
@@ -114,8 +127,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Latest Releases */}
+        <section className="mx-auto px-4 bg-muted/50 py-12 border-y border-primary/20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Get the Latest</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-md">
+              Just wanting to update? Check out the latest release.
+            </p>
+          </div>
+          <div className="flex flex-col items-center  justify-center">
+            <div className="pt-8 px-4 bg-background/40 rounded-xl">
+              <GitHubReleases
+                owner="itsriprod"
+                repo="deskthing"
+                latest={1}
+                showHeader={false}
+              />
+            </div>
+            <div className="flex align-center justify-center mt-4">
+              <Link href="/releases">
+                <Button variant="outline">
+                  More releases
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+
+            <ChevronDown className="w-8 h-8 text-primary/50 mt-12" />
+          </div>
+        </section>
+
         {/* Features Grid */}
-        <section className="bg-muted/50 py-24">
+        <section className="mx-auto px-4 py-24 border-y border-primary/20">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">
               Why DeskThing?
@@ -139,14 +182,21 @@ export default function Home() {
                   your CarThing into a versatile desktop companion.
                 </p>
               </div>
-              <div className="p-6 rounded-lg border border-primary/20 bg-background/40">
-                <SiGithub className="w-12 h-12 text-primary mb-4" />
+              <Link
+                href="https://github.com/itsriprod/deskthing"
+                target="_blank"
+                className="p-6 rounded-lg border border-primary/20 bg-background/40 hover:bg-blue-900/10 shadow-lg hover:shadow-blue-900/30 shadow-background duration-300 transition-all"
+              >
+                <div className="flex items-start justify-between">
+                  <SiGithub className="w-12 h-12 text-primary mb-4" />
+                  <ExternalLink className="text-primary mb-4" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">100% Open Source</h3>
                 <p className="text-muted-foreground">
                   Built by the community, for the community. Contribute and help
                   shape the future of DeskThing.
                 </p>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
@@ -174,7 +224,7 @@ export default function Home() {
         </section>
 
         {/* Timeline Section */}
-        <section className="container mx-auto px-4 py-24">
+        <section className="bg-muted/50 mx-auto px-4 py-24 border-y border-primary/20">
           <h2 className="text-3xl font-bold text-center mb-12">
             The DeskThing Journey
           </h2>
