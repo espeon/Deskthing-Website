@@ -5,12 +5,14 @@ import {
   Rocket,
   Zap,
   ChevronRight,
+  Book,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { CommunityApps } from "@/components/community-apps";
 import React from "react";
 import { SiGithub } from "react-icons/si";
+import { SocialIcons } from "@/components/socialIcons";
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -42,7 +44,7 @@ export default function Home() {
                 productivity in the process. Everyone wins.
               </p>
               <div className="flex gap-4 mb-4">
-                <Link href="/apps">
+                <Link href="/start-here">
                   <Button>
                     Get Started
                     <Rocket className="ml-2 h-4 w-4" />
@@ -51,9 +53,12 @@ export default function Home() {
                 <Link href="https://github.com/itsriprod/deskthing">
                   <Button variant="outline">
                     Documentation
-                    <Zap className="ml-2 h-4 w-4" />
+                    <Book className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
+              </div>
+              <div className="text-muted-foreground">
+                <SocialIcons />
               </div>
             </div>
 

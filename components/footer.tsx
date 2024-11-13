@@ -10,6 +10,7 @@ import {
   SiBluesky,
 } from "react-icons/si";
 import { Heart } from "lucide-react";
+import { SocialIcons } from "./socialIcons";
 
 export function Footer() {
   return (
@@ -26,62 +27,7 @@ export function Footer() {
             Forever Open Source
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Link href="https://github.com/itsriprod/deskthing" target="_blank">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-green-400"
-            >
-              <SiGithub className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link href="https://github.com/itsriprod/deskthing" target="_blank">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-green-400"
-            >
-              <SiDiscord className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link href="https://github.com/itsriprod/deskthing" target="_blank">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-green-400"
-            >
-              <SiBluesky className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link
-            href="https://github.com/itsriprod/deskthing"
-            target="_blank"
-            className="border-r pr-2"
-          >
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-green-400"
-            >
-              <SiReddit className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link href="https://github.com/itsriprod/deskthing" target="_blank">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hover:text-green-400"
-            >
-              <SiTrello className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link href="https://github.com/sponsors/itsriprod" target="_blank">
-            <Button variant="ghost" size="icon" className="hover:text-pink-400">
-              <Heart className="w-5 h-5" />
-            </Button>
-          </Link>
-        </div>
+        <SocialIcons />
       </nav>
     </header>
   );
