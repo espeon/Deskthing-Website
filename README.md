@@ -1,17 +1,27 @@
 # Deskthing Website
 
-This is a [Next.js](https://nextjs.org/) project.
+Visit the website: https://deskthing-website.pages.dev/
+
+This is a conceptual website for the [DeskThing](https://deskthing.app/) project. It is built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/itsripprod/deskthing-website.git
+```
+
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/index.tsx`.

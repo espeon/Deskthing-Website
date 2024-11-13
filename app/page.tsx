@@ -32,18 +32,18 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10  pointer-events-none">
               <h1 className="text-4xl md:text-5xl font-bold font-mono bg-gradient-to-r from-primary to-primary/60 text-transparent pb-6 bg-clip-text">
                 Take Back the
                 <br />
                 Car Thing
               </h1>
-              <p className="text-muted-foreground max-w-2xl mb-8 xl:mr-8">
+              <p className="text-muted-foreground max-w-2xl mb-8 xl:mr-8  pointer-events-none">
                 Upcycle your discontinued Car Thing into a versatile desktop
                 assistant that enhances your flow. Reduce e-waste and boost your
                 productivity in the process. Everyone wins.
               </p>
-              <div className="flex gap-4 mb-4">
+              <div className="flex gap-4 mb-4 pointer-events-auto">
                 <Link href="/start-here">
                   <Button>
                     Get Started
@@ -57,37 +57,41 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <div className="text-muted-foreground">
+              <div className="text-muted-foreground pointer-events-auto">
                 <SocialIcons />
               </div>
             </div>
 
             <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible">
-              <div className="absolute -bottom-5 right-[50%] w-[320px] h-[180px] overflow-hidden shadow-2xl transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 rounded-xl">
-                <Image
-                  src="https://i.imgur.com/H95qxxs.png"
-                  alt="DeskThing Weather"
-                  fill
-                  className="object-contain rounded-xl"
-                />
-                <Image
-                  src="/lyrthing.png"
-                  alt="DeskThing Audio"
-                  fill
-                  className="object-cover"
-                />
+              <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105">
+                <p className="text-muted-foreground/50 group-hover:text-muted-foreground font-semibold absolute -bottom-6 z-10 transition-all duration-300">
+                  LyrThing - espeon
+                </p>
+                <div className="w-[320px] h-[180px] overflow-hidden shadow-2xl rounded-xl">
+                  <Image
+                    src="/lyrthing.png"
+                    alt="DeskThing Audio"
+                    fill
+                    className="object-cover rounded-xl"
+                  />
+                </div>
               </div>
 
-              <div className="hidden lg:block absolute top-0 left-[68%] w-[320px] h-[180px] rounded-xl overflow-hidden shadow-2xl transform rotate-12 transition-transform hover:rotate-3 hover:scale-105">
-                <Image
-                  src="/wwave.png"
-                  alt="DeskThing Audio"
-                  fill
-                  className="object-cover"
-                />
+              <div className="group hidden rounded-xl lg:block absolute top-0 left-[68%] transform rotate-12 transition-transform hover:rotate-3 hover:scale-105">
+                <p className="text-muted-foreground/50 group-hover:text-muted-foreground font-semibold absolute -top-6 z-10 transition-all duration-300">
+                  Weather Wave - Dammit Jeff
+                </p>
+                <div className="w-[320px] h-[180px] rounded-xl overflow-hidden shadow-2xl group-hover:z-50">
+                  <Image
+                    src="/wwave.png"
+                    alt="DeskThing Audio"
+                    fill
+                    className="object-cover rounded-xl group-hover:z-50"
+                  />
+                </div>
               </div>
 
-              <div className="absolute top-14 left-[10%] h-[300px] w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:-rotate-1 hover:scale-105">
+              <div className="absolute top-14 left-[10%] h-[300px]  w-full rounded-lg overflow-visible transform rotate-3 transition-transform hover:-rotate-1 hover:scale-105">
                 <Image
                   src="/carthing@3x.png"
                   alt="DeskThing Interface"
