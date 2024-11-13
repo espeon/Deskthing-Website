@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4">
+        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4 fade-in-60 ease-in-out duration-500">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-full block lg:hidden">
               <div className="absolute top-[15%] left-0 w-40 h-20 bg-primary/80 rounded-full blur-3xl opacity-20" />
@@ -129,13 +129,13 @@ export default function Home() {
 
         {/* Latest Releases */}
         <section className="mx-auto px-4 bg-muted/50 py-12 border-y border-primary/20">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 fade-in-60 ease-in-out duration-500">
             <h2 className="text-3xl font-bold mb-4">Get the Latest</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-md">
               Just wanting to update? Check out the latest release.
             </p>
           </div>
-          <div className="flex flex-col items-center  justify-center">
+          <div className="flex flex-col items-center justify-center fade-in-60 ease-in-out duration-500">
             <div className="pt-8 px-4 bg-background/40 rounded-xl">
               <GitHubReleases
                 owner="itsriprod"
