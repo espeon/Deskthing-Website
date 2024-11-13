@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { DM_Sans, Geist_Mono, Baskervville } from "next/font/google";
+import { Geist, Geist_Mono, Baskervville } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Upcycle your Car Thing into a versatile desktop assistant.",
 };
 
-const sans = DM_Sans({
+const sans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: "400",
