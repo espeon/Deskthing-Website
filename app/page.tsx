@@ -35,7 +35,7 @@ export default function Home() {
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10 pointer-events-none">
               <Link
                 href="https://deskthing.app"
-                className="bg-primary/50 hover:bg-primary/70 rounded-full px-4 py-1 text-sm font-bold dark:text-slate-300"
+                className="bg-primary/50 hover:bg-primary/70 rounded-full px-4 py-1 text-sm font-bold dark:text-slate-300 pointer-events-auto"
               >
                 View the official DeskThing site{" "}
                 <ChevronRight className="inline-block w-4 h-4 mb-0.5" />
