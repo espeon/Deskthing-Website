@@ -17,6 +17,7 @@ import {
   Download,
   Rocket,
   PartyPopper,
+  CircleAlert,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -102,14 +103,14 @@ export default function GitHubReleases({
       console.log("Your UA is", userAgent);
       if (userAgent.includes("Windows")) {
         return "windows";
+      } else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) {
+        return "ios";
       } else if (userAgent.includes("Mac")) {
         return "macos";
       } else if (userAgent.includes("Linux")) {
         return "linux";
       } else if (userAgent.includes("Android")) {
         return "android";
-      } else if (userAgent.includes("iPhone") || userAgent.includes("iPad")) {
-        return "ios";
       }
     }
   };
@@ -166,7 +167,7 @@ export default function GitHubReleases({
         <ScrollArea
           className="h-full max-h-[700px] overflow-auto pr-4 -mt-16"
           style={{
-            maskImage: `linear-gradient(to bottom, transparent 2rem, black 4rem, black 90%, transparent 97%)`,
+            maskImage: `linear-gradient(to bottom, transparent 2rem, black 4rem, black 93%, transparent 97%)`,
             maskComposite: "intersect",
           }}
         >
@@ -217,9 +218,6 @@ export default function GitHubReleases({
               {showLatestRelevantRelease && index == 0 && (
                 <>
                   <ShowReleasesForDevice release={release} deviceOS={os} />
-                  <div className="text-sm text-muted-foreground my-1">
-                    Or download the latest release for your device:
-                  </div>
                 </>
               )}
               <div className="space-y-1">
@@ -260,21 +258,43 @@ function ShowReleasesForDevice({
   const relevantRelease = displayRelevantRelease(release, deviceOS);
   if (relevantRelease && deviceOS) {
     return (
-      <Link
-        href={relevantRelease.browser_download_url}
-        target="_blank"
-        className="flex items-center space-x-2 py-2"
-      >
-        <Button size="sm" variant="default">
-          <Download className="w-4 h-4 mr-2 inline" />
-          DeskThing {release.name} for{" "}
-          {deviceOS[0].toUpperCase().replace("I", "i").replace("M", "m") +
-            deviceOS.slice(1).replace("os", "OS")}
-        </Button>
-      </Link>
+      <>
+        <Link
+          href={relevantRelease.browser_download_url}
+          target="_blank"
+          className="flex items-center space-x-2 py-2"
+        >
+          <Button size="sm" variant="default">
+            <Download className="w-4 h-4 mr-2 inline" />
+            DeskThing {release.name} for{" "}
+            {deviceOS[0].toUpperCase().replace("I", "i").replace("M", "m") +
+              deviceOS.slice(1).replace("os", "OS")}
+          </Button>
+        </Link>
+        <div className="text-sm text-muted-foreground my-1">
+          Or download the latest release for your device:
+        </div>
+      </>
     );
   } else {
-    return <div>No release for {deviceOS}. Sorry about that.</div>;
+    return (
+      <>
+        <div className="bg-red-500 text-white text-sm p-2 rounded-md flex flex-row items-center space-x-2">
+          <CircleAlert className="w-6 h-6 inline" />
+          <div className="text-left">
+            We don't have a release for{" "}
+            {deviceOS
+              ? deviceOS[0].toUpperCase().replace("I", "i").replace("M", "m") +
+                deviceOS.slice(1).replace("os", "OS")
+              : "your device"}
+            . Sorry about that.
+          </div>
+        </div>
+        <div className="text-sm text-muted-foreground my-1">
+          If we got it wrong, download the latest release for your device:
+        </div>
+      </>
+    );
   }
 }
 

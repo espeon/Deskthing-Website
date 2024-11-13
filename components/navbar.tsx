@@ -29,7 +29,7 @@ export function Navbar() {
         <div className="flex items-center gap-8">
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost">
                 <Menu />
               </Button>
             </SheetTrigger>

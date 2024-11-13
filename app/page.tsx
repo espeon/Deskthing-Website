@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <main>
         {/* Hero Section */}
-        <section className="container mx-auto max-w-screen-xl overflow-x-visible lg:pt-32 pb-8 lg:pb-48 px-4 animate-in fade-in-80 ease-in-out duration-500">
+        <section className="container mx-auto max-w-screen-xl overflow-x-clip xl:overflow-visible lg:pt-8 xl:pt-16 pb-8 lg:pb-48 px-4 animate-in fade-in-80 ease-in-out duration-500">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-full block lg:hidden">
               <div className="absolute top-[15%] left-0 w-40 h-20 bg-primary/80 rounded-full blur-3xl opacity-20" />
@@ -35,7 +35,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-4 lg:px-16 z-10 pointer-events-none">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:mt-12 xl:mt-32 lg:pr-16 xl:pr-16 z-10 pointer-events-none">
               <Link
                 href="https://deskthing.app"
                 className="bg-primary/50 hover:bg-primary/70 rounded-full px-4 py-1 text-sm font-bold dark:text-slate-300 pointer-events-auto"
@@ -48,7 +48,7 @@ export default function Home() {
                 <br />
                 Car Thing
               </h1>
-              <p className="text-muted-foreground max-w-2xl xl:mr-8  pointer-events-none">
+              <p className="text-muted-foreground max-w-2xl xl:mr-8 pointer-events-none box-shadow-md">
                 Upcycle your discontinued Car Thing or other mobile device into
                 a versatile desktop assistant that enhances your flow. Reduce
                 e-waste and boost your productivity in the process.
@@ -76,7 +76,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative h-[400px] hidden lg:block lg:right-24 lg:p-32 w-0 lg:w-auto overflow-visible overflow-x-visible animate-in fade-in ease-in-out duration-500">
+            <div className="relative h-[400px] hidden lg:block lg:right-24 w-0 lg:w-auto overflow-x-visible animate-in fade-in ease-in-out duration-500">
               <div className="group absolute -bottom-5 right-[50%] transform -rotate-6 transition-transform hover:-rotate-3 hover:scale-105 text-muted-foreground/95 p-4 -m-4">
                 {/* Bigger target area so we avoid annoying the user */}
                 <div className="absolute w-[320px] h-[180px] pb-32 group-hover:scale-150 duration-300">
@@ -101,7 +101,7 @@ export default function Home() {
 
               <div className="group hidden rounded-xl lg:block absolute top-0 left-[68%] transform rotate-12 transition-transform hover:rotate-3 hover:scale-105 text-muted-foreground/75">
                 {/* Bigger target area so we avoid annoying the user */}
-                <div className="absolute w-[320px] h-[180px] group-hover:scale-150 duration-300 -top-10">
+                <div className="absolute w-[320px] h-[180px] overflow-clip group-hover:scale-150 duration-300 -top-10">
                   <Link
                     href="https://discord.com/channels/1267348109067817051/1301413692381855857/1301413692381855857"
                     target="_blank"

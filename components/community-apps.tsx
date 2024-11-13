@@ -25,6 +25,38 @@ type App = {
 // todo: define this elsewhere (or on an API?) so its easier to update
 const apps: App[] = [
   {
+    title: "Spotify",
+    description: "Control spotify from your DeskThing",
+    author: "ItsRiprod",
+    stars: 124,
+    tags: ["first-party", "music", "beta"],
+    repoUrl: "https://github.com/itsriprod/deskthing-apps",
+  },
+  {
+    title: "Image",
+    description: "Display a saved image on your DeskThing",
+    author: "ItsRiprod",
+    stars: 124,
+    tags: ["first-party", "media", "beta"],
+    repoUrl: "https://github.com/itsriprod/deskthing-apps",
+  },
+  {
+    title: "Record",
+    description: "A now playing viewer. Skeumorphic.",
+    author: "ItsRiprod",
+    stars: 124,
+    tags: ["first-party", "media", "beta"],
+    repoUrl: "https://github.com/itsriprod/deskthing-apps",
+  },
+  {
+    title: "Weather",
+    description: "Shows local weather, or weather at a customizable point.",
+    author: "ItsRiprod",
+    stars: 124,
+    tags: ["first-party", "weather", "beta"],
+    repoUrl: "https://github.com/itsriprod/deskthing-apps",
+  },
+  {
     title: "LyrThing",
     description: "Display synced lyrics and now-playing information.",
     author: "espeon",
@@ -44,10 +76,10 @@ const apps: App[] = [
     title: "WeatherWave",
     description:
       "Ambient display that shows off your weather, time, and whatever spotify song is playing all at a glance",
-    author: "Dammit Jeff",
+    author: "ItsRiprod, Dammit Jeff",
     stars: 256,
     tags: ["music", "weather", "beta"],
-    repoUrl: null,
+    repoUrl: "https://github.com/itsriprod/deskthing-apps",
   },
   {
     title: "Global Media Player",
@@ -77,6 +109,7 @@ const apps: App[] = [
 ];
 
 const tagColors: Record<string, string> = {
+  "first-party": "bg-green-500/10 text-green-500 hover:bg-green-500/20",
   stable: "bg-green-500/10 text-green-500 hover:bg-green-500/20",
   beta: "bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20",
   alpha: "bg-red-500/10 text-red-500 hover:bg-red-500/20",
